@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon_io/favicon.ico" type="image/x-icon">
+    <title>Adicionar Produto</title>
+</head>
+<body>
+    <div>
+        <p>Eletron</p>
+    </div>
+    
+    <div>
+        <a href="index.html" target="_blank">Página Inicial</a>
+        <a href="ctrl-estoque.html" target="_blank">Controle de Estoque</a>
+        <a href="add-produto.html" target="_blank">Adicionar Produto</a>
+        <a href="funcionarios.html" target="_blank">Funcionários</a>
+    </div>
+
+    
+    <h2>Adicionar Produto</h2>
+
+    <form action="formulario">
+        <div>
+            <label for="foto-produto">Link para foto:  </label>
+            <input type="image" id="foto-produto" name="playstation5">
+        </div>
+        
+        <div>
+            <label for="descricao">Descrição do produto: </label>
+            <!-- Adicione o id apropriado para o input abaixo -->
+            <input type="text" id="descricao" name="descrição_produto" placeholder="Descrição do produto">
+        </div>
+        
+        <div>
+            <label for="preco">Preço (em R$): </label>
+            <!-- Adicione o id apropriado e o type para receber números abaixo -->
+            <input type="number" id="preco" name="preço-produto" placeholder="insira o valor">
+        </div>
+        
+        <div>
+            <!-- Preencha as propriedades necessárias para os elementos abaixo -->
+            <label for="qt_produto">Quantidade disponível: </label>
+            <input type="number" id="qt_protudo" name="qnt_produto" placeholder="Quantos produtos deseja">
+        </div>
+
+        <div class="form-add">
+            <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
+            <button type="submit" id="formulario">Adicionar</button>
+        </div>
+
+    </form>
+
+    <div>
+        <p>Siga-nos nas redes sociais!</p>
+
+        <div>
+            <a href="https://github.com/aureliocapingana01" target="_blank"><img src="img/github.jpg" alt="icone do github" width="50px">github</a>
+        </div>
+    </div>
+
+</body>
+</html>

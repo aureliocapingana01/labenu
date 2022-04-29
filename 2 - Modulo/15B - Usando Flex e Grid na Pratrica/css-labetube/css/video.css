@@ -1,0 +1,122 @@
+@charset"UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap');
+
+:root{
+    --cor1:#45C4B0;
+    --cor2:#13678A;
+    --cor3:#012030;
+
+    --font-padrao:'Noto Sans', verdana, sans-serif;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font-padrao);
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+header.cabecalho{
+    background-color: var(--cor1);
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+header.cabecalho h1{
+    font-weight: 600;
+    font-size: 2em;
+}
+header.cabecalho .busca-box{
+    display: flex;
+    background: #fff;
+    align-items: center;
+    border-radius: 10px;
+    padding: 3px;
+}
+header.cabecalho .busca-txt{
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    background: none;
+    color: black;
+}
+
+.cine{
+    width: 880px;
+    margin: auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    grid-row: auto;
+}
+.cine #cinema p{
+    margin-top: 3px;
+    margin-bottom: 30px;
+}
+.tela{
+    max-width: 350px;
+    border-image: linear-gradient(210deg, var(--cor1), var(--cor3), var(--cor1)) 5;
+    align-items: center;
+}
+
+.rodape{
+    background-color: var(--cor2);
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.rodape p,
+.rodape a{
+    color: #fff;
+}
+.rodape a{
+    margin-left: 10px;
+}
+.rodape a:hover{
+    cursor: pointer;
+
+}
+
+
+@media screen and (min-device-width : 320px) {
+
+    header.cabecalho h1 a{
+        font-size: 20px;
+        text-align: center;
+    }
+    header.cabecalho .busca-box{
+        display: none;
+    }
+    .cine{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    #cinema{
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+    .cine #cinema p{
+        font-size: 15px;
+    }
+    .tela{
+        width: 100%;
+    }
+    .rodape{
+        font-size: 13px;
+        height: 60px;
+        flex-direction: column;
+
+    }
+}
