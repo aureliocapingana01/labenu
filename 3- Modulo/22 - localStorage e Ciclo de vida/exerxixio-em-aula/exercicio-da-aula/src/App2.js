@@ -27,17 +27,8 @@ class App extends React.Component {
   }
 
   pegar = () =>{
-    const nomeLS = localStorage.getItem(`nome`)
-    const emailLS = localStorage.getItem(`email`)
-    const idadeLS = localStorage.getItem(`idade`)
 
-    this.setState({
-      nome: nomeLS, 
-      email:emailLS, 
-      idade:idadeLS
-    })
   }
-
  
   render() {
 
