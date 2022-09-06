@@ -22,19 +22,14 @@ const Rout = () => {
 
         <Router>
             <Routes>
+                //exact path. brawserRoute, switch, route
                 <Route path="/login" element={<LoginPage/>} /> 
-        
                 <Route path="/cadastro" element={ <SignUpPage/>} />
-                
-                <Route path="/" element={<ReciListPage/>} />
-                    
+                <Route path="/" element={<ReciListPage/>} />   
                 <Route path="/adicionar-receita" element={<AddReciPage/>} />
-                
                 <Route path="/detalhe/:id" element={<ReciDetalhePage/>} />
-                
                 <Route path="*" element={<ErroPage/>} />
-                    
-
+            
             </Routes>
         </Router>
     )
