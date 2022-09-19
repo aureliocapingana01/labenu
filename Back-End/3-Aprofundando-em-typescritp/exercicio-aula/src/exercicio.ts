@@ -8,13 +8,13 @@ Crie um sistema de cadastro de usuário que contenha:
 
 */
 
-import { type } from "os"
+
 
 //1
 type Person = {
     id: string | number,
     name: string,
-    email: string,
+    email: string | undefined,
     password: string | number,
     role: Role
 }

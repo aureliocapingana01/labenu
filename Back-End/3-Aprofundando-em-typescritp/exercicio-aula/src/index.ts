@@ -6,14 +6,14 @@ nome = "Aurélio"
 nome = 30
 
 /* Type Aliases */
-type Pessoa = {
-    nome : string,
+type Person = {
+    name : string,
     age: number,
     profission: boolean | string
 }
 
-const funcionario: Pessoa = {
-    nome: "Aurélio",
+const functionary: Person = {
+    name: "Aurélio",
     age: 30,
     profission: "Analista de dados" 
 }
@@ -21,17 +21,17 @@ const funcionario: Pessoa = {
 /*Type + Union*/
 type BirthDate = number | string | undefined
 
-type Usuário = {
-    nome: string,
+type Use = {
+    name: string,
     birthDate: BirthDate
 }
 
-const user1: Usuário = {
-    nome: "Aurélio",
+const user1: Use = {
+    name: "Aurélio",
     birthDate: "10/09"
 }
-const user2: Usuário = {
-    nome: "Capingana",
+const user2: Use = {
+    name: "Capingana",
     birthDate: undefined
 }
 
@@ -52,14 +52,14 @@ const client : userInfo = {
     name: "Aurélio",
     age: 30,
     userBank: "Banco do Brasil",
-    password: "Angola"
+    password: 12345
 }
 
-console.log(client)
+console.table(client)
 
 
 /* Enum  */
-enum BancoClientes {
+enum BankClient {
     AURELIO = 12345,
     CASTRO = 23456,
     SECEU = 34567,
@@ -67,14 +67,15 @@ enum BancoClientes {
     AFONSO = 56789
 }
 
-type Banco = {
-    nome: string,
-    cliente: BancoClientes
+
+type Bank = {
+    name: string,
+    client: BankClient
+}
+const manager: Bank = {
+    name: "Capingana",
+    client: BankClient.AURELIO
 }
 
-const gerente: Banco = {
-    nome: "Capingana",
-    cliente: BancoClientes.AURELIO
-}
 
-console.log(gerente)
+console.log(manager)

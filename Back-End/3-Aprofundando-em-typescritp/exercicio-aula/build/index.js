@@ -4,37 +4,37 @@ Object.defineProperty(exports, "__esModule", { value: true });
 let nome;
 nome = "Aurélio";
 nome = 30;
-const funcionario = {
-    nome: "Aurélio",
+const functionary = {
+    name: "Aurélio",
     age: 30,
     profission: "Analista de dados"
 };
 const user1 = {
-    nome: "Aurélio",
+    name: "Aurélio",
     birthDate: "10/09"
 };
 const user2 = {
-    nome: "Capingana",
+    name: "Capingana",
     birthDate: undefined
 };
 const client = {
     name: "Aurélio",
     age: 30,
     userBank: "Banco do Brasil",
-    password: "Angola"
+    password: 12345
 };
-console.log(client);
+console.table(client);
 /* Enum  */
-var BancoClientes;
-(function (BancoClientes) {
-    BancoClientes[BancoClientes["AURELIO"] = 12345] = "AURELIO";
-    BancoClientes[BancoClientes["CASTRO"] = 23456] = "CASTRO";
-    BancoClientes[BancoClientes["SECEU"] = 34567] = "SECEU";
-    BancoClientes[BancoClientes["ANA"] = 45678] = "ANA";
-    BancoClientes[BancoClientes["AFONSO"] = 56789] = "AFONSO";
-})(BancoClientes || (BancoClientes = {}));
-const gerente = {
-    nome: "Capingana",
-    cliente: BancoClientes.AURELIO
+var BankClient;
+(function (BankClient) {
+    BankClient[BankClient["AURELIO"] = 12345] = "AURELIO";
+    BankClient[BankClient["CASTRO"] = 23456] = "CASTRO";
+    BankClient[BankClient["SECEU"] = 34567] = "SECEU";
+    BankClient[BankClient["ANA"] = 45678] = "ANA";
+    BankClient[BankClient["AFONSO"] = 56789] = "AFONSO";
+})(BankClient || (BankClient = {}));
+const manager = {
+    name: "Capingana",
+    client: BankClient.AURELIO
 };
-console.log(gerente);
+console.log(manager);

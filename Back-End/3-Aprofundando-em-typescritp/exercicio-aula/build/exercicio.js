@@ -8,7 +8,6 @@ Crie um sistema de cadastro de usuário que contenha:
 2- Tipos Aliases da conta: AdminAccount e NormalAccount; com as  propriedades account e permission
 
 */
-Object.defineProperty(exports, "__esModule", { value: true });
 /* exercicio 2
 
 Continuar nosso sistema de cadastro de usuario criando:
