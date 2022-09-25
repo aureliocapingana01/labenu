@@ -89,6 +89,7 @@ app.delete('/deleteTrack', (req:Request, res:Response) => {
 
 //metodo para para buscar uma playListe
 app.get('/playlist/search', (req:Request, res:Response) => {
+
     try {
         //passar o nome do usuario no autorizetion
         const userName = req.headers.authorization
@@ -108,29 +109,47 @@ app.get('/playlist/search', (req:Request, res:Response) => {
 
         res.send(playlist)
     }
-    catch (error) {
-    // res.send(error.message)
-    res.send('Erro dectado na solicitação')
+    catch (error:any) {
+    res.send(error.message)
+    // res.send('Erro dectado na solicitação')
     }
 
 })
 
 // para cria uma playlist
 app.post('/playlist/create', (req:Request , res:Response) => {
+
+    let statusCode = 400
+    
     try {
         //passar o nome do usuario no autorizetion, verificar
      const userName = req.headers.authorization
+
+     if(!userName){
+        statusCode = 401
+        throw new Error ('Authorization nt found')
+    }
+
      const user = users.find((user) => user.id === userName)
  
-     if(!user) throw new Error("Usuáro não encontrado") // throw é como jogar, dizer para jogar um novo erro
+     if(!user) {
+        statusCode = 404
+        throw new Error("Usuáro não encontrado") // throw é como jogar, dizer para jogar um novo erro
+     }
 
      const playlistName = req.body.name
 
-     if(!playlistName) throw new Error("É necessario informar o nome da playlist")
+     if(!playlistName) {
+        statusCode = 422
+        throw new Error("É necessario informar o nome da playlist")
+    } 
 
      const playlist = user.playlists.find(playlist => playlist.name.toLocaleLowerCase() === (playlistName as String).toLocaleLowerCase())
 
-     if(playlist) throw new Error("playlist já existe")
+     if(playlist) {
+        statusCode = 409
+        throw new Error("playlist já existe")
+     }
 
      const newPlaylist = {
         id: generateId(),
@@ -141,12 +160,15 @@ app.post('/playlist/create', (req:Request , res:Response) => {
      user.playlists.push(newPlaylist)
      res.status(201).send('A playlist foi criado com sucesso')
     } 
-    catch (error) {
-       res.send('error.message')
+    catch (error:any) {
+       res.status(statusCode).send(error.message)
     }
 })
 
 app.post("/playlist/:id/track", (req: Request, res: Response) => {
+
+    let statusCode = 400
+
     try {
         const userName = req.headers.authorization
         const user = users.find((user) => user.id === userName)
@@ -160,7 +182,10 @@ app.post("/playlist/:id/track", (req: Request, res: Response) => {
 
         const { name, artist, url } = req.body
 
-        if (!name || !artist || !url) throw new Error("É necessário informar nome, artista e url da faixa")
+        if (!name || !artist || !url){
+            statusCode = 422
+            throw new Error("É necessário informar nome, artista e url da faixa")
+        }
 
         const newTrack = {
             id: generateId(),
@@ -173,8 +198,8 @@ app.post("/playlist/:id/track", (req: Request, res: Response) => {
 
         res.status(201).send("Faixa adicionada com sucesso")
 
-    } catch (error) {
-        res.send('criada com sucesso')
+    } catch (error:any) {
+        res.status(statusCode).send(error.message)
     }
 })
 

@@ -90,8 +90,8 @@ app.get('/playlist/search', (req, res) => {
         res.send(playlist);
     }
     catch (error) {
-        // res.send(error.message)
-        res.send('Erro dectado na solicitação');
+        res.send(error.message);
+        // res.send('Erro dectado na solicitação')
     }
 });
 // para cria uma playlist
@@ -117,6 +117,32 @@ app.post('/playlist/create', (req, res) => {
         res.status(201).send('A playlist foi criado com sucesso');
     }
     catch (error) {
-        res.send('error.message');
+        res.send(error.message);
+    }
+});
+app.post("/playlist/:id/track", (req, res) => {
+    try {
+        const userName = req.headers.authorization;
+        const user = data_1.users.find((user) => user.id === userName);
+        if (!user)
+            throw new Error("Usuário não encontrado");
+        const playlistId = req.params.id;
+        const playlist = user.playlists.find(playlist => playlist.id === playlistId);
+        if (!playlist)
+            throw new Error("Playlist não existe");
+        const { name, artist, url } = req.body;
+        if (!name || !artist || !url)
+            throw new Error("É necessário informar nome, artista e url da faixa");
+        const newTrack = {
+            id: (0, uuid_1.v4)(),
+            name,
+            artist,
+            url
+        };
+        playlist.tracks.push(newTrack);
+        res.status(201).send("Faixa adicionada com sucesso");
+    }
+    catch (error) {
+        res.send(error.message);
     }
 });
