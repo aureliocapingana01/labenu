@@ -67,7 +67,38 @@ app.get('/users/:id', (req:Request, res:Response) => {
     }
 })
 
+//metodo post para incluir ou criar algum recurso 
+app.post('/users', (req:Request, res:Response) => {
+    let statusCode = 400
 
+    try {
+        const {name, email, type, age} = req.body // restuturar passar tudo para o body
+
+        if(!name || !email || !type || !age) {
+            statusCode = 422
+            throw new Error("Ausência de paramentro no body");   
+        }
+
+        if(type.toLowerCase() !== USER_ROLE.ADMIN && type.toLowerCase() !== USER_ROLE.NORMAL)// !== diferente 
+        {
+            statusCode = 422
+            throw new Error("Inserir um tipo de usuario valido, 'NORMAL' ou 'ADMIN'"); 
+        }
+
+        const newUser : User = {
+            id: Math.random(), // criar numero aleatorio
+            name: name,
+            email: email,
+            type: type, 
+            age: age
+        }
+
+    }
+
+    catch (error:any) {
+        res.status(statusCode).send(error.message)
+    }
+})
 
 
 
