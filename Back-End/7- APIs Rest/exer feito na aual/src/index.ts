@@ -67,6 +67,7 @@ app.get('/users/:id', (req:Request, res:Response) => {
     }
 })
 
+
 //metodo post para incluir ou criar algum recurso 
 app.post('/users', (req:Request, res:Response) => {
     let statusCode = 400
@@ -79,20 +80,24 @@ app.post('/users', (req:Request, res:Response) => {
             throw new Error("Ausência de paramentro no body");   
         }
 
-        if(type.toLowerCase() !== USER_ROLE.ADMIN && type.toLowerCase() !== USER_ROLE.NORMAL)// !== diferente 
+        if(type.toUpperCase() !== USER_ROLE.ADMIN && type.toUpperCase() !== USER_ROLE.NORMAL)// !== diferente 
         {
             statusCode = 422
             throw new Error("Inserir um tipo de usuario valido, 'NORMAL' ou 'ADMIN'"); 
         }
 
+        // para mandar isso no array
         const newUser : User = {
-            id: Math.random(), // criar numero aleatorio
+            id: Math.random(), // criar numero aleatorio, ou Date.new()
             name: name,
             email: email,
             type: type, 
             age: age
         }
 
+        users.push(newUser)
+
+        res.status(200).send({message: 'Usário criado com sucesso', users})
     }
 
     catch (error:any) {
@@ -100,12 +105,41 @@ app.post('/users', (req:Request, res:Response) => {
     }
 })
 
+//para fazer uma alteração em algum usuario
+app.patch('/users/:id', (req:Request, res:Response) => {
 
+     let statusCode = 400
 
+     try {
+        const id = Number(req.params.id)
+        const {newName, newEmail} = req.body
 
+        if(!newName || !newEmail) {
+            statusCode = 422
+            throw new Error("Ausência de parametros");
+        }
 
+            const userExist = users.find(array => array.id === id)
+            if(!userExist) {
+                statusCode = 404
+                throw new Error("Usuario não encontrado"); 
+            }
 
+            for (let user of users) {
+                if(id === user.id) {
+                    user.email = newEmail
+                    user.name = newName
+                    user.age = user.age +1
+                }
 
+                res.status(200).send(users)
+        }
+        
+     } catch (error:any) {
+        res.status(statusCode).send(error.message)
+        
+     }
+})
 
 
 const server = app.listen(process.env.PORT || 2023, () => {
