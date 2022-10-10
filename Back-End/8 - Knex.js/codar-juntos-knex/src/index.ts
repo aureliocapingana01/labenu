@@ -29,7 +29,7 @@ app.get('/produtos', async (req:Request, res:Response) =>{
     `)
 
     res.status(200).send(resultado)
-    
+
   } catch (error) {
     res.status(errorCode).send(error.message)
   }
