@@ -4,8 +4,9 @@ const criarTabelaClientes = async () => {
     try {
         await connection.raw(`
             CREATE TABLE IF NOT EXISTS clientes (
-            id INT PRIMARY KEY AUTO_INCREMENT,
+            id BIGINT PRIMARY KEY AUTO_INCREMENT,
             nome VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL UNIQUE,
             profissao VARCHAR(100) NOT NULL,
             cartao ENUM("bronze", "prata", "ouro") NOT NULL
             );
@@ -21,13 +22,13 @@ const criarTabelaClientes = async () => {
 async function popularTabelaClientes() {
     try {
         await connection.raw(`
-            INSERT INTO clientes (id, nome, profissao, cartao)
+            INSERT INTO clientes (id, nome, email, profissao, cartao)
             VALUES 
-            (1, "Aurélio ", "Dev Jr", "bronze"),
-            (2, "Ana ", "Psicologa", "bronze"),
-            (3, "Afonso ", "Engenheiro", "ouro"),
-            (4, "Manasse ", "professor", "prata"),
-            (5, "Albertina ", "medica", "ouro");
+            (1, "Aurélio ",   "aurelio@gmail.com",   "Dev Jr",     "bronze"),
+            (2, "Ana ",       "ana@gmail.com",       "Psicologa",  "bronze"),
+            (3, "Afonso ",    "afonso@gmail.com",    "Engenheiro", "ouro"),
+            (4, "Manasse ",   "manasse@gmail.com",   "professor",  "prata"),
+            (5, "Albertina ", "albertina@gmail.com", "medica",     "ouro");
         `)
         
         console.log("Tabela clientes populada com sucesso.")
