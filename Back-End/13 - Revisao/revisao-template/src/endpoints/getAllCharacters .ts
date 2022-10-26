@@ -5,5 +5,5 @@ export default function(
     req: Request,
     res: Response
 ){
-    res.send(characters)
+    res.send(characters)//passar a resposta
 }
