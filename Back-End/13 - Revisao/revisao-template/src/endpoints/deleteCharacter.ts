@@ -1,18 +1,28 @@
-import { Request, Response} from "express";
+import { Request, Response } from "express";
+import connection from "../connection";
 import { characters } from "../data";
 
-export default function deleteCharacter(
-    req:Request,
-    res:Response
-): void {
+export default async function deleteCharacter(
+    req: Request,
+    res: Response
+): Promise<void> {
 
-    const id = Number(req.params.id)
+    try {
+        const id = Number(req.params.id)
 
-    const index: number = characters.findIndex(
-        character => character.id === id
-    ) 
+        // const index: number = characters.findIndex(
+        //     character => character.id === id
+        // ) 
 
-    if (index > - 1) characters.splice(index, 1)
+        // if (index > - 1) characters.splice(index, 1)
 
-    res.status(200).end()
+        await connection("character")
+            .delete()
+            .where({ id })
+
+        res.status(200).end()
+
+    } catch (error: any) {
+        res.status(500).end()
+    }
 }

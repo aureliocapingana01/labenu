@@ -1,24 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.characters = exports.movies = void 0;
+exports.characters = void 0;
 const type_1 = require("./type");
-exports.movies = [
-    {
-        id: 1,
-        title: "X-men: O Filme",
-        year: 2000
-    },
-    {
-        id: 2,
-        title: "Deadpool",
-        year: 2016
-    },
-    {
-        id: 3,
-        title: "Mãos Talentosa",
-        year: 1999
-    }
-];
 exports.characters = [
     {
         id: 1,

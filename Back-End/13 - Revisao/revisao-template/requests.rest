@@ -1,17 +1,16 @@
 
 GET http://localhost:3003/character
-
 ###
 
 PUT http://localhost:3003/character
 Content-Type: application/json
 
 {
-    "name": "Aurelio",
+    "name": "Manguena",
     "gender": "MALE",
-    "description": "O angolano no Brasil"
+    "description": ""
 }
 
 ###
 
-DELETE  http://localhost:3003/character/1
+DELETE  http://localhost:3003/character/8

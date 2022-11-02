@@ -1,9 +1,39 @@
 import { Request, Response } from "express"
-import { characters } from "../data"
+import connection from "../connection"
+import { character } from "../type"
 
-export default function(
+
+export default async function getAllCharacters(
     req: Request,
     res: Response
-):void {
-    res.send(characters)//passar a resposta
+): Promise<void> {
+
+    try {
+        const { name, orderBy, orderType, page } = req.query
+
+        // const name = req.query
+
+        const resultPerPage = 5
+
+        /*
+        pagina 1 => offset 0 === 5*0
+        pagina 2  => offset 5 === 5*1
+        pagina 3 => offset 10 === 5*2 
+        */
+
+        const offset = resultPerPage * (Number(page) - 1)
+
+        debugger
+
+        const characters: character[] = await connection("character")
+            .where("name", "LIKE", `%${name}%`)
+            .orderBy(orderBy as string || 'name', orderType as string)
+            .offset(offset)
+
+        res.send(characters)//passar a resposta
+
+    } catch (error: any) {
+        // console.log(error)
+        res.status(500).send("error no servidor")
+    }
 }

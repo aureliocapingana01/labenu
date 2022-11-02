@@ -9,3 +9,7 @@ app.get('/character', getAllCharacters )
 app.put('/character', createCharacter)
 
 app.delete('/character/:id', deleteCharacter)
+
+// app.get('/movie/:id/characters') 
+
+// A cima para pegar todos os personagens que participaram de um determinado filme, para isso se precisaria do join  
