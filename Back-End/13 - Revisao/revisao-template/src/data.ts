@@ -2,23 +2,23 @@ import { character, GENDER, movie } from "./type";
 
 
 // Array dos filmes:
-export let movies: movie[] = [
-    {
-        id: 1,
-        title: "X-men: O Filme",
-        year: 2000
-    },
-    {
-        id: 2,
-        title: "Deadpool",
-        year: 2016
-    },
-    {
-        id: 3,
-        title: "Mãos Talentosa",
-        year: 1999
-    }
-]
+// export let movies: movie[] = [
+//     {
+//         id: 1,
+//         title: "X-men: O Filme",
+//         year: 2000
+//     },
+//     {
+//         id: 2,
+//         title: "Deadpool",
+//         year: 2016
+//     },
+//     {
+//         id: 3,
+//         title: "Mãos Talentosa",
+//         year: 1999
+//     }
+// ]
 
 
 // Array dos personagens:

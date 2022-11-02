@@ -12,7 +12,7 @@ export default function deleteCharacter(
         character => character.id === id
     ) 
 
-    characters.splice(index, 1)
+    if (index > - 1) characters.splice(index, 1)
 
     res.status(200).end()
 }
