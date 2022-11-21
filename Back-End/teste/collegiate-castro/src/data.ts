@@ -20,6 +20,7 @@ export let classes: CLASS[] = [
     }
 ]
 
+
 export let teachers: teacher[] = [
     {
         id: 1,
@@ -61,7 +62,3 @@ export let teachers: teacher[] = [
         subject: SUBJECT.REACT,
     }
 ]
-
-
-
-
