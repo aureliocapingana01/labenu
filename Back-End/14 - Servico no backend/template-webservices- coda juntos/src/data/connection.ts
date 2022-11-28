@@ -1,6 +1,7 @@
 import knex from 'knex'
 import dotenv from 'dotenv'
 
+
 dotenv.config()
 
 export const connection = knex({
@@ -14,3 +15,4 @@ export const connection = knex({
         multipleStatements: true
     }
 })
+

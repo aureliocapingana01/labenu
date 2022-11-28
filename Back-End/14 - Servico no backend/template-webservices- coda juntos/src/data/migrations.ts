@@ -1,12 +1,13 @@
-import { connection } from "./connection"
+import  connection  from "./connection"
 import users from "./users.json"
 
 const printError = (error: any) => { console.log(error.sqlMessage || error.message) }
 
-const createTables = () => connection
+const createTables = async () => connection
    .raw(`
 
-      CREATE TABLE IF NOT EXISTS aula_webservices_users (
+      CREATE TABLE IF NOT EXISTS aula_webservices_users 
+      (
          id VARCHAR(255) PRIMARY KEY,
          name VARCHAR(255) NOT NULL,
          nickname VARCHAR(255) NOT NULL,

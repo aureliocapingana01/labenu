@@ -18,8 +18,8 @@ export default async function createUser(
 
       const id: string = Date.now().toString()
 
-      const addres = await getAddressInfo(address)
-      console.log(addres)
+      const result = await getAddressInfo(address)
+      console.log(result)
 
       const newUser: user = { id, name, nickname, email, address }
 
