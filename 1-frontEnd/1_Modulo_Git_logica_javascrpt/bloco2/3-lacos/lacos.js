@@ -84,3 +84,34 @@ const formaFrase = (arr) => {
 }
 
 console.log(frase = formaFrase(arrayDePalvras))
+
+
+
+
+/*
+let valor = 0
+for(let i = 0; i < 5; i++) {
+    console.log(i)
+  valor += i
+}
+console.log(valor)
+*/
+
+
+
+
+
+
+/*
+const quantidadeTotal = Number(prompt("Digite a quantidade de linhas: "))
+let quantidadeAtual = 0
+while(quantidadeAtual < quantidadeTotal){
+  let linha = ""
+  for(let asteriscos = 0; asteriscos < quantidadeAtual + 1; asteriscos++){
+    linha += "*"
+  }
+  console.log(linha)
+  quantidadeAtual++
+}
+
+*/
