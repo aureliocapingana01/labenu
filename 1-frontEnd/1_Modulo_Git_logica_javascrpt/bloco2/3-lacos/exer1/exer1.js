@@ -5,4 +5,18 @@
     c) Por fim, imprima o array com os nomes dos bichinhos no console
  */
 
-let qtBichos = Number(prompt('Quantos bichos você tem: '))
+let qtAniamais = Number(prompt('Quantos animais voce tem: '))
+// let qtAniamais = 2
+let nomeDosAnimais = []
+let nome = [] 
+
+for (i = 0; i < qtAniamais; i++) {
+    if(qtAniamais > 0) {
+        nome = prompt('Digite os nomes: ')
+        nomeDosAnimais = nome
+        console.log(nomeDosAnimais)
+    }
+    else {
+        console.log("Que pena! Você pode adotar um pet!")
+    }
+}
