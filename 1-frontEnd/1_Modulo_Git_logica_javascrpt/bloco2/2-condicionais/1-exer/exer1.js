@@ -1,3 +1,5 @@
+
+
 /*
 1. Faça um programa que pergunta ao usuário qual a idade dele e imprima no console se ele/ela pode dirigir (apenas maiores de idade).
     a) Faça um `prompt` para receber a idade do usuário e guarde em uma variável.
@@ -6,7 +8,9 @@
  */
 
 
-const idade = Number(prompt('Qual a sua idade: '))
+const input = require('readline-sync') // para inportar a biblioteca
+const idade = input.question('Qual a sua idade: ')
+
 
 if(idade >= 18) {
     console.log('Você pode dirigir')

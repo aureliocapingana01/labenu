@@ -41,18 +41,17 @@ console.log(res = divisaoDoArray(array))
 // c) Escreva um programa que **crie** um novo array contendo, somente, os números pares do array original e **imprima** esse novo array
 
 let newArray = []
-let pare 
+let numeroPar 
 
-const numeroPare = (array) => {
-    // let newArray = []
-    for (let i = 0; i < array.length; i++) {
-      pare = array[i]
-      console.log(pare)
-      if(pare / 2 ) {
-          newArray = pare
+const verificarPar = (array) => {
+    for(let i = 0; i < array.length; i++) {
+        if(array[i] % 2 == 0){
+            numeroPar = array[i]
         }
     }
-    return newArray
+    return numeroPar
 }
 
-console.log(newArray = numeroPare(array))
+console.log(newArray = verificarPar(array))
+
+
