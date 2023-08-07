@@ -13,7 +13,7 @@ let nome;
 if (qtAniamais !== 0) {
   for (animais = 0; animais < qtAniamais; animais++) {
     nome = input.question("Digite os nomes: ");
-    nomeDosAnimais += nome + ",";
+    nomeDosAnimais += nome + " ";
   }
   console.table(nomeDosAnimais);
 } else {

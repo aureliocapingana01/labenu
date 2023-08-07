@@ -5,7 +5,7 @@
     d) Escreva um programa que **crie** um novo array contendo strings, da seguinte forma: "O elemento do índex `i` é: `numero`". Depois, **imprima** este novo array.
     e) Escreva um programa que imprima no console o maior e o menor números contidos no array original */
 
-    const array = [80, 30, 130, 40, 60, 21, 70, 105, 62, 162, 120, 90, 103, 110, 55]
+    // const array = [80, 30, 130, 40, 60, 21, 70, 105, 62, 162, 120, 90, 103, 110, 55]
     
     
 //  a) Escreva um programa que **imprime** cada um dos valores do array original.
@@ -40,18 +40,20 @@ console.log(res = divisaoDoArray(array))
 
 // c) Escreva um programa que **crie** um novo array contendo, somente, os números pares do array original e **imprima** esse novo array
 
-let newArray = []
-let numeroPar 
+const arr = [5,9,44,8,7,11,12,54,99,63,2]
 
-const verificarPar = (array) => {
-    for(let i = 0; i < array.length; i++) {
-        if(array[i] % 2 == 0){
-            numeroPar = array[i]
-        }
+let arrPar = []
+let arrImpar = []
+
+for (let i = 0; i < arr.length; i++ ){
+    if (arr[i] % 2 == 0) {
+        arrPar = arr[i]
+
+        console.log(arrPar)
     }
-    return numeroPar
+    // else {
+    //     arrImpar = arr[i]
+
+    //     console.log(`O numeros impares do array são ${arrImpar}`)
+    // }
 }
-
-console.log(newArray = verificarPar(array))
-
-
