@@ -30,4 +30,11 @@ const dogSalsicha = pets.filter((dog) => {
 
 
 //c) Crie um novo array que possuirá mensagens para enviar para todos os clientes que são poodles. A mensagem deve ser: "Você ganhou um cupom de desconto de 10% para tosar o/a `[NOME]`!"
+const dogPoodle = pets.filter((poodle) => {
+    return poodle.raca == 'Poodle'
+})
 
+const cupomPoodle = dogPoodle.map((dogPoodle) => {
+    return `Você ganhou um cupom de desconto de 10% para tosar o/a ${dogPoodle.nome}`
+})
+console.log(cupomPoodle)
