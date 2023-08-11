@@ -2,17 +2,17 @@
 
 const pokemons = [
     { nome: "Bulbasaur", tipo: "grama" },
-    { nome: "Bellsprout", tipo: "grama" },
-    { nome: "Charmander", tipo: "fogo" },
-    { nome: "Vulpix", tipo: "fogo" },
-    { nome: "Squirtle", tipo: "água" },
     { nome: "Psyduck", tipo: "água" },
+    { nome: "Vulpix", tipo: "fogo" },
+    { nome: "Charmander", tipo: "fogo" },
+    { nome: "Bellsprout", tipo: "grama" },
+    { nome: "Squirtle", tipo: "água" },
  ]
 
  const nomes = pokemons.map((pokemon) => {
     return pokemon.nome;
   });
   
-  const pokemonsOrdenados = nomes.sort((a, b) => a - b);
+  const pokemonsOrdenados = nomes.sort((a, b) => a.localeCompare(b));
   
   console.log(pokemonsOrdenados);
