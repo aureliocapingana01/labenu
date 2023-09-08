@@ -8,7 +8,6 @@ const MainContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  /* background-Color : red */
 `;
 
 class App extends React.Component {
@@ -22,43 +21,39 @@ class App extends React.Component {
 
     arrUser : [
       {
+        id : Math.random(),
         nomeUsuario: "Paulinha",
         fotoUsuario: "https://picsum.photos/50/50",
         fotoPost: "https://picsum.photos/200/150"
       },
       {
+        id : Math.random(),
         nomeUsuario: "Aurélio",
         fotoUsuario: aurelio,
         fotoPost: "https://picsum.photos/200/151"
       },
       {
+        id : Math.random(),
         nomeUsuario: "Amanda",
         fotoUsuario: "https://picsum.photos/50/52",
         fotoPost: "https://picsum.photos/200/152"
       }
     ]
   }
-  // postUser = this.state.arrUser.map((user) => {
-  //   return (
-  //     <Post
-  //      nomeUsuario = {user.nomeUsuario}
-  //      fotoUsuario = {user.fotoUsuario}
-  //      fotoPost = {user.fotoPost}
-  //     />
-  //   )
-  // })
 
-  inputNomeUsuario = (e) => {
+  inputName = (e) => {
     this.setState({userName : e.target.value})
   }
-  inputFotoUsuario = (e) => {
+  inputFoto = (e) => {
     this.setState({userPhoto : e.target.value})
   }
-  inputFotoPost = (e) => {
+  inputPost = (e) => {
     this.setState({userPost : e.target.value})
   }
+
   addPost = () => {
     const newPost = {
+      id : Math.random(),
       nomeUsuario : this.state.userName,
       fotoUsuario : this.state.userPhoto,
       fotoPost : this.state.userPost
@@ -68,42 +63,40 @@ class App extends React.Component {
       arrUser : [...this.state.arrUser, newPost],
       userName : '',
       userPhoto : '',
-      userPost : '',
-    });
-    console.log('Parabéns voce postou')
+      userPost : ''
+    })
     console.log(newPost)
-  };
+    console.log('Parabéns voce Postou')
+  }
 
 
   render() {
-    // console.log(this.state.nomeUsuario)
 
-    const postUser = this.state.arrUser.map((user) => {
+    const arrPost = this.state.arrUser.map((user) => {
       return (
         <Post
-         nomeUsuario = {user.nomeUsuario}
-         fotoUsuario = {user.fotoUsuario}
-         fotoPost = {user.fotoPost}
+        nomeUsuario = {user.nomeUsuario}
+        fotoUsuario = {user.fotoUsuario}
+        fotoPost = {user.fotoPost}
         />
       )
     })
-
-
     return (
       <MainContainer>
-      <div>
-        <input placeholder="Digite seu nome"
-          value={this.state.userName} onChange={this.inputNomeUsuario} 
-        />
-        <input placeholder="Foto do usuario" 
-          value={this.state.userPhoto} onChange={this.inputFotoUsuario}
-        />
-        <input placeholder="Foto do post" 
-          value={this.state.userPost} onChange={this.inputFotoPost}
-        />
-        <button onClick={this.addPost}>Postar</button>
-      </div>
-      {postUser}
+        <div>
+          <input placeholder="Digite seu nome" onChange={this.inputName} 
+             value={this.state.userName} 
+          />
+          <input placeholder="Insira sua foto" onChange={this.inputFoto} 
+             value={this.state.userPhoto} 
+          />
+          <input placeholder="Insira seu post" onChange={this.inputPost} 
+             value={this.state.userPost} 
+          />
+
+          <button onClick={this.addPost}>Enviar Post</button>
+        </div>
+      {arrPost}
       </MainContainer>
     )
   }
