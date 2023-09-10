@@ -1,5 +1,4 @@
 import React from "react";
-import { Div } from "../Components/Style/Pagina";
 
 class Comeco extends React.Component {
     render() {
