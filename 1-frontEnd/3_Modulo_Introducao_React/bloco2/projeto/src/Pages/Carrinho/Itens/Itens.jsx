@@ -5,7 +5,7 @@ class Itens extends React.Component {
   render() {
     return (
       <ConjuntoDeItens>
-        <p> {this.props.quanti} </p>
+        <p> {this.props.quantidade} </p>
         <p> {this.props.nome} </p>
         <button onClick={this.props.remover}>Remover</button>
       </ConjuntoDeItens>
