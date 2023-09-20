@@ -55,15 +55,13 @@ class App extends React.Component {
     return produtoFiltrados;
   };
 
-
   // Para adicionar item no carrinho
   carrinho = (produto) => {
-    const produtoCarrinho = this.state.carrinho.filter(item => {
-      if(item.id === produto.id) {
-        return item
+    const produtoCarrinho = this.state.carrinho.filter((item) => {
+      if (item.id === produto.id) {
+        return item;
       }
-
-    })
+    });
     if (produtoCarrinho.length === 0) {
       produto.quantidade = 1;
       const novoCarrinho = [...this.state.carrinho, produto];
@@ -83,10 +81,8 @@ class App extends React.Component {
         carrinho: novoCarrinho,
       });
     }
-    this.somaValorTotal(produto.price)
+    this.somaValorTotal(produto.price);
   };
-
-  
 
   // Para remover item no carrinho
   removerItem = (remove) => {
@@ -111,30 +107,27 @@ class App extends React.Component {
         carrinho: novoCarrinho,
       });
     }
-    this.removeValorTotal(remove.price)
+    this.removeValorTotal(remove.price);
   };
 
-
-  // Funcao para altera o valor total ao add um item 
+  // Funcao para altera o valor total ao add um item
   somaValorTotal = (valor) => {
     this.setState({
-      valorTotal : this.state.valorTotal + valor
-    })
-  }
+      valorTotal: this.state.valorTotal + valor,
+    });
+  };
 
-
-  // Funcao para remover o valor total ao remover um item 
+  // Funcao para remover o valor total ao remover um item
   removeValorTotal = (valor) => {
     this.setState({
-      valorTotal : this.state.valorTotal - valor
-    })
-  }
-
+      valorTotal: this.state.valorTotal - valor,
+    });
+  };
 
   render() {
+
     // Para fazer os filtros dos produtos
     const filtragemDosProdutos = this.filtrarProdutos();
-    // console.log(filtragemDosProdutos)
 
     return (
       <ComponentesNoApp>
