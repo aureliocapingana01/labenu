@@ -33,11 +33,14 @@ export const TelaDeUsuario = styled.div `
 
 export const List = styled.div `
  display: flex;
- flex-direction: column;
+ /* flex-direction: column; */
  gap: 1rem;
  margin-bottom: 1rem;
  color: #FFF;
+ justify-content: space-between;
  
-
+ & div {
+    flex: 1;
+ }
 `
 

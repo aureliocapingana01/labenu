@@ -4,14 +4,17 @@ import { List, TelaDeUsuario } from "./Style";
 
 class Usuario extends React.Component {
     state = {
-        arrUser : []
+        arrUser : [],
+        
     }
     componentDidMount() {
         this.getAllUsers()
     }
 
     getAllUsers = () => {
-        axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', {
+        const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users'
+
+        axios.get(url, {
             headers : {
                 Authorization : 'aurelio-capingana-hopper'
             }
@@ -23,12 +26,28 @@ class Usuario extends React.Component {
             console.log(error)
         })
     }
+
+    deleteUser = (id) => {
+        axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`, {
+            headers : {
+                Authorization : 'aurelio-capingana-hopper'
+            }
+        })
+        .then(() => {
+              alert('Usuario deletado com sucesso')
+              this.getAllUsers()
+        })
+        .catch((error) => {
+            console.log(error)
+        })  
+    }
+
     
   render() {
     const listUser = this.state.arrUser.map((user) => {
         return (
             <List>
-                {user.name}
+                <div>{user.name} </div> <div><button onClick={() => this.deleteUser(user.id)} >deletar</button></div>
             </List>
         )
     })
