@@ -20,7 +20,7 @@ const TrackCard = (props) => {
         <p>{props.trackName} - </p>
         <h4> {props.artist} </h4>
         <p> {props.url} </p>
-        <p>X</p>
+        <button onClick={() => props.deletarTrack(props.trackId)}>Deletar musica</button>
       </div>
 
       <audio controls>

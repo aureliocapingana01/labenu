@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import TrackCard from "./TrackCad";
+import { axiosConfig, baseUrl } from "../../Constantes";
+import axios from "axios";
 
 const PlaylistDetailsContainer = styled.div`
   background-color: green;
@@ -31,21 +33,39 @@ const TrackCreationForm = styled.form`
 
 class PlaylistDetails extends React.Component {
   state = {
-    tracks: [
-      {
-        id: "06fdec06-2283-4e56-ab24-37a35f39fd89",
-        name: "Magui",
-        artist: "Matias Damasio",
-        url: "https://youtu.be/S-VFv4_mzuQ?si=fVg6OprtUvBJariZ",
-      },
-      {
-        id: "86fb2d2b-8b36-4001-81c5-7ce74ed1b5be",
-        name: "Cofres do Ceu",
-        artist: "C4 Pedro",
-        url: "https://youtu.be/lspxXX3JbMA?si=5J00m8DRdFPDVFVf",
-      },
-    ],
+    tracks: [],
+    trackName : '',
+    trackArtist : '',
+    trackUrl : '',
   };
+
+  componentDidMount = () =>{
+    this.getPlaylistTracks()
+  }
+
+  getPlaylistTracks = () => {
+    axios.get(`${baseUrl}/${this.props.playlistId}/tracks`, axiosConfig).then(res => {
+  
+      this.setState({tracks : res.data.result.tracks})
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  removeTrackFromPlaylist = trackId => {
+    axios.delete(`${baseUrl}/${this.props.playlistId}/tracks/${trackId}`, axiosConfig)
+    .then(() => {
+      this.getPlaylistTracks()
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  controlInpts = e => {
+    this.setState({[e.target.name] : e.target.name})
+  }
 
   render() {
     const track = this.state.tracks.map((music) => {
@@ -55,6 +75,8 @@ class PlaylistDetails extends React.Component {
           trackName={music.name}
           artist={music.artist}
           url={music.url}
+          trackId={music.id}
+          deletarTrack={this.removeTrackFromPlaylist}
         />
       );
     });
@@ -64,27 +86,33 @@ class PlaylistDetails extends React.Component {
         PlaylistDetails
         <TrackCreationForm>
           <div>
-            {" "}
-            <label>
-              Nome da Música: <input placeholder="Nome da musica" />{" "}
-            </label>{" "}
+            <label> Nome da Música:</label>
+              <input placeholder="Nome da musica" 
+              name="trackName"
+              value={this.state.trackName}
+              onChange={this.controlInpts}
+              />
           </div>
           <div>
-            {" "}
-            <label>
-              Nome do Artista: <input placeholder="Nome do artista" />{" "}
-            </label>{" "}
+            <label>Nome do Artista:</label>
+              <input placeholder="Nome do artista" 
+              name="trackArtist"
+              value={this.state.trackArtist}
+              onChange={this.controlInpts}
+              />
           </div>
           <div>
-            {" "}
-            <label>
-              Url da Música: <input placeholder="Url da musica" />{" "}
-            </label>{" "}
+            <label>Url da Música:</label>
+              <input placeholder="Url da musica" 
+              name="trackUrl"
+              value={this.state.trackUrl}
+              onChange={this.controlInpts}
+              />
           </div>
           <button type="submit"> Adicionar Musica</button>
         </TrackCreationForm>
         {track}
-        <button onClick={() => this.props.trocarDeTela("playlists")}>
+        <button onClick={() => this.props.trocarDeTela("playlists", "")}>
           Voltar para Playlist
         </button>
       </PlaylistDetailsContainer>

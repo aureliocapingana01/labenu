@@ -11,12 +11,12 @@ const PlaylistCard = (props) => {
   return (
     <PlaylistCardContainer>
       {/* PlaylistCard */}
-      <button onClick={() => props.trocarDeTela("playlistDetails")}>
+      <button onClick={() => props.trocarDeTela("playlistDetails", props.playlistId)}>
         Abrir Playlist
       </button>
       {/* <button>Deletar Playlist</button> */}
       <p>{props.name} </p>
-      <p>X</p>
+      <button onClick={() => props.delete(props.playlistId)}>Deletar</button>
     </PlaylistCardContainer>
   );
 };
