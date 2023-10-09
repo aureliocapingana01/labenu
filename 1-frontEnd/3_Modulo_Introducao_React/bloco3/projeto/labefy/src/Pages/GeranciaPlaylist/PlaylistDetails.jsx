@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TrackCard from "./TrackCad";
-import { axiosConfig, baseUrl } from "../../Constantes";
+import { baseUrl, axiosConfig } from "../../Constantes";
 import axios from "axios";
 
 const PlaylistDetailsContainer = styled.div`
@@ -43,6 +43,7 @@ class PlaylistDetails extends React.Component {
     this.getPlaylistTracks()
   }
 
+  // Para pegar as musicas
   getPlaylistTracks = () => {
     axios.get(`${baseUrl}/${this.props.playlistId}/tracks`, axiosConfig).then(res => {
   
@@ -53,6 +54,7 @@ class PlaylistDetails extends React.Component {
     })
   }
 
+  // Funcao para remover musica
   removeTrackFromPlaylist = trackId => {
     axios.delete(`${baseUrl}/${this.props.playlistId}/tracks/${trackId}`, axiosConfig)
     .then(() => {
@@ -63,11 +65,37 @@ class PlaylistDetails extends React.Component {
     })
   }
 
+  // Funcao para adicioanr musica
+  addTracksPlayList = e => {
+    e.preventDefault()
+
+    const body = {
+      name : this.state.trackName,
+      artist : this.state.trackArtist,
+      url : this.state.trackUrl
+    }
+    axios.post(`${baseUrl}/${this.props.playlistId}/tracks`, body, axiosConfig)
+    .then(() => {
+      this.getPlaylistTracks()
+      this.setState({
+        trackName : '',
+        trackArtist : '',
+        trackUrl : ''
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+
+  // para controlar todos os inputs
   controlInpts = e => {
-    this.setState({[e.target.name] : e.target.name})
+    this.setState({[e.target.name] : e.target.value})
   }
 
   render() {
+
     const track = this.state.tracks.map((music) => {
       return (
         <TrackCard
@@ -84,7 +112,8 @@ class PlaylistDetails extends React.Component {
     return (
       <PlaylistDetailsContainer>
         PlaylistDetails
-        <TrackCreationForm>
+        
+        <TrackCreationForm onSubmit={this.addTracksPlayList} >
           <div>
             <label> Nome da Música:</label>
               <input placeholder="Nome da musica" 
@@ -111,7 +140,9 @@ class PlaylistDetails extends React.Component {
           </div>
           <button type="submit"> Adicionar Musica</button>
         </TrackCreationForm>
+
         {track}
+
         <button onClick={() => this.props.trocarDeTela("playlists", "")}>
           Voltar para Playlist
         </button>
