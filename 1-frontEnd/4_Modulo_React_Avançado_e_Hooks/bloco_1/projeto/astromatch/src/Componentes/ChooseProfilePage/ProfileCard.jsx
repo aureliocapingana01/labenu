@@ -1,13 +1,18 @@
 import React from "react";
+import { ProfileCardContainer, ProfileInfo, ProfilePicture } from "./StyleChooseProfileCard";
 
-const ProfileCard = () => {
+const ProfileCard = (props) => {
+
+  const profile = props.profile
+
   return (
-    <div>
-      {/* <h2>Tela do Profile Card</h2> */}
-      <img src={'https://picsum.photos/300/300'} alt="" />
-      <p>Nome da pessoa, 22</p>
-      <p>Descricao da pessoa</p>
-    </div>
+    <ProfileCardContainer>
+      <ProfilePicture src={profile.photo}/>
+      <ProfileInfo>
+      <p>{profile.name}, {profile.age} </p>
+      <p> {profile.bio} </p>
+      </ProfileInfo>
+    </ProfileCardContainer>
   );
 }
 

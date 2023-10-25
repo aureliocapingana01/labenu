@@ -1,11 +1,15 @@
 import React from "react";
+import { Avatar, ListItemContainer } from "./StyleListItem";
 
-const MatchListItem = () => {
+const MatchListItem = (props) => {
+
+  const profile = props.profile
+  
   return (
-    <div>
-      <img src={'https://picsum.photos/40/30'}/>
-      <p>Nome da pessoa</p>
-    </div>
+    <ListItemContainer>
+      <Avatar src={profile.photo}/>
+      <p> {profile.name} </p>
+    </ListItemContainer>
   );
 }
 

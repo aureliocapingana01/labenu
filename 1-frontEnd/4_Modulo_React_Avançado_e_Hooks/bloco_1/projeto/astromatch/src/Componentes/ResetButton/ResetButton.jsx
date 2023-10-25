@@ -1,11 +1,18 @@
+import axios from "axios";
 import React from "react";
 
 const ResetButton = () => {
+
+  const onClickReset = () => {
+    axios.put('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aurelio/clear')
+    .then(res => {
+      // console.log(res)
+    })
+  }
+
   return (
     <div>
-      <h2>
-         <button>Resetar curtidas e matches</button>
-      </h2>
+         <button onClick={onClickReset} >Resetar curtidas e matches</button>
     </div>
   );
 }

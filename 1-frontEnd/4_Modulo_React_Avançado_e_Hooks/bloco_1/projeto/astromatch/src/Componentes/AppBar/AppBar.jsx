@@ -1,12 +1,13 @@
 import React from "react";
+import { AppBarContainer } from "./StyleAppBAr";
 
-const AppBAr = () => {
+const AppBAr = (props) => {
   return (
-    <div>
-      <button>Escolher</button>
+    <AppBarContainer>
+      <button onClick={props.goToChooseProfilePage }>Escolher</button>
       <p>AstroMatch</p>
-      <button>Lista</button>
-    </div>
+      <button onClick={props.goToMatchListPage}>Lista</button>
+    </AppBarContainer>
   );
 }
 

@@ -1,12 +1,14 @@
 import React from "react";
+import { ButtonsContainer } from "./StyleChooseButton";
+// import axios from "axios";
 
-const ChooseButtons = () => {
+const ChooseButtons = (props) => {
+
   return (
-    <div>
-      {/* <h2>Tela do Choose Buttons</h2> */}
-      <button>Não</button>
-      <button>Sim</button>
-    </div>
+    <ButtonsContainer>
+      <button onClick={props.onClickNo} >Não</button>
+      <button onClick={props.onClickYes} >Sim</button>
+    </ButtonsContainer>
   );
 }
 
