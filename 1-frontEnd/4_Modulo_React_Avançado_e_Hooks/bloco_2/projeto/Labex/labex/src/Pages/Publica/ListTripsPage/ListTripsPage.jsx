@@ -3,6 +3,7 @@
 import { useNavigate } from "react-router-dom";
 // import { listaDeViagens } from "../../../Components/Urls/Urls";
 import { ListTripsContainer } from "./ListTripsStyle";
+import { DivButton } from "../../Privada/LoginPage/Login";
 
 const ListTripsPage = () => {
 
@@ -48,8 +49,11 @@ const ListTripsPage = () => {
         <>
             <h2>Listas de viagens</h2>
             {listTrips}
-            <button onClick={() => navigate("/")}>Voltar</button>
-            <button onClick={() => navigate("/trips/application")} >Inscrever-Se</button>
+
+            <DivButton >
+                <button onClick={() => navigate("/")}>Voltar</button>
+                <button onClick={() => navigate("/trips/application")} >Inscrever-Se</button>
+            </DivButton>
 
         </>
     )

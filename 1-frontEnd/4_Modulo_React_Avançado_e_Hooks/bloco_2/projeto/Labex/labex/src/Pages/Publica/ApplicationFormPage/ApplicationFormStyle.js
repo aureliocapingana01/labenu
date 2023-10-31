@@ -8,22 +8,20 @@ export const ApplicationForm = styled.form`
 `
 
 export const Input = styled.input `
-    width: 100%;
+   width: 90%;
     padding: 10px;
-    border-radius: 10px;
-    margin: 5px 0;
-    /* border: none; */
-    /* list-style: none; */
+    border-radius: 20px;
+    margin-bottom: 10px;
 `
 export const Select = styled.select `
-    width: 100%;
+   width: 90%;
     padding: 10px;
-    border-radius: 10px;
-    /* background-color: red; */
+    border-radius: 20px;
+    margin-bottom: 10px;
 `
 export const Option = styled.option`
-    width: 100%;
+    width: 90%;
     padding: 10px;
-    border-radius: 10px;
-    /* background-color: red; */
+    border-radius: 20px;
+    margin-bottom: 10px;
 `

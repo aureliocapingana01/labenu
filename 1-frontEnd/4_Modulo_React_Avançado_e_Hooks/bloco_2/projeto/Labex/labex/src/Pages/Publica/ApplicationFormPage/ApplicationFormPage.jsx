@@ -1,6 +1,7 @@
  import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ApplicationForm, Input, Option, Select } from "./ApplicationFormStyle";
+import { DivButton } from "../../Privada/LoginPage/Login";
 
 const ApplicationFormPage = () => {
 
@@ -23,8 +24,10 @@ const ApplicationFormPage = () => {
                 </Select>
             </ApplicationForm>
 
-            <button onClick={() => navigate('/trips/list')} >Voltar</button>
-            <button>Enviar</button>
+            <DivButton>
+                <button onClick={() => navigate('/trips/list')} >Voltar</button>
+                <button>Enviar</button>
+            </DivButton>
         </>
     )
 }
