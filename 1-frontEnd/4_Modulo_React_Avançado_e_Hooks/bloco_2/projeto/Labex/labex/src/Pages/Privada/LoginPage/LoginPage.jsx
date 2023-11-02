@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { DivButton, FormLogin, LoginInput } from "./Login";
+import { Button, DivButton, FormLogin, LoginInput } from "./Login";
 
 const LoginPage = () => {
 
@@ -13,8 +13,8 @@ const LoginPage = () => {
             <LoginInput type="password" placeholder="Senha"/>
 
             <DivButton >
-                <button onClick={() => navigate('/')}>Voltar</button>
-                <button>Entrar</button>
+                <Button onClick={() => navigate('/')}>Voltar</Button>
+                <Button>Entrar</Button>
             </DivButton>
         </FormLogin>
     )

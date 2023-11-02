@@ -1,1 +1,1 @@
-export const listaDeViagens = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/:aluno/trips'
+export const urlGetTrips = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/:aluno/trips'

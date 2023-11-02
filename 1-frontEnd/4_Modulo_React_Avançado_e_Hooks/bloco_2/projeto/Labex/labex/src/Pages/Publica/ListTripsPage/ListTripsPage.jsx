@@ -1,37 +1,32 @@
-// import axios from "axios";
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { listaDeViagens } from "../../../Components/Urls/Urls";
-import { ListTripsContainer } from "./ListTripsStyle";
-import { DivButton } from "../../Privada/LoginPage/Login";
+import axios from "axios";
+import { listaDeViagens, urlGetTrips } from "../../../Components/Urls/Urls";
+import { H2, ListTripsContainer } from "./ListTripsStyle";
+import { Button, DivButton } from "../../Privada/LoginPage/Login";
+
+
 
 const ListTripsPage = () => {
 
+    const [listTrip, setListTrip] = useState([])
 
     const navigate = useNavigate()
 
-    
-        const trips = [
-            {
-                "id": "LdO2ISxildsFGguN1p1u",
-                "date": "31/12/2019",
-                "durationInDays": 7,
-                "planet": "Mercúrio",
-                "name": "Ano novo em Mercúrio",
-                "description": "Venha passar a virada pertinho do Sol!"
-            },
-            {
-                "id": "fM93Q5NuUhbrJszkmRy6",
-                "date": "05/02/2024",
-                "durationInDays": 12,
-                "planet": "Marte",
-                "name": "A liberdade",
-                "description": "Conheça a liberdade de ser liberto!"
-            }
-        ]
+    const getTrips = () => {
+        axios.get(urlGetTrips)
+        .then(res => {
+            setListTrip(res.data.trips)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    getTrips()
     
 
-        const listTrips = trips.map(trip => {
+        const listTrips = listTrip.map(trip => {
             return(
                 <ListTripsContainer>
                     <p>Nome : {trip.name} </p>
@@ -43,18 +38,18 @@ const ListTripsPage = () => {
             )
         })
 
-        // console.log(listTrips)
 
     return(
         <>
-            <h2>Listas de viagens</h2>
-            {listTrips}
-
             <DivButton >
-                <button onClick={() => navigate("/")}>Voltar</button>
-                <button onClick={() => navigate("/trips/application")} >Inscrever-Se</button>
+                <Button onClick={() => navigate("/")}>Voltar</Button>
+                <Button onClick={() => navigate("/trips/application")} >Inscrever-Se</Button>
             </DivButton>
 
+            <H2>Lista de viagens</H2>
+
+
+            {listTrips}
         </>
     )
 }

@@ -1,16 +1,23 @@
  import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ApplicationForm, Input, Option, Select } from "./ApplicationFormStyle";
-import { DivButton } from "../../Privada/LoginPage/Login";
+import { ApplicationForm, ApplicationFormContainer, Input, Option, Select } from "./ApplicationFormStyle";
+import { Button, DivButton } from "../../Privada/LoginPage/Login";
+import { H2 } from "../ListTripsPage/ListTripsStyle";
 
 const ApplicationFormPage = () => {
 
     const navigate = useNavigate()
 
     return(
-        <>
-            <h2>Inscreva-se para uma viagem</h2>
+        <ApplicationFormContainer>
+            <DivButton>
+                <Button onClick={() => navigate('/trips/list')} >Voltar</Button>
+                <Button>Enviar</Button>
+            </DivButton>
 
+            <H2>Inscreva-se para uma viagem</H2>
+
+            
             <ApplicationForm action="">
                 <Select name="" id="">
                     <Option value="">Escolha uma viagem</Option>
@@ -24,11 +31,7 @@ const ApplicationFormPage = () => {
                 </Select>
             </ApplicationForm>
 
-            <DivButton>
-                <button onClick={() => navigate('/trips/list')} >Voltar</button>
-                <button>Enviar</button>
-            </DivButton>
-        </>
+        </ApplicationFormContainer>
     )
 }
 export default ApplicationFormPage

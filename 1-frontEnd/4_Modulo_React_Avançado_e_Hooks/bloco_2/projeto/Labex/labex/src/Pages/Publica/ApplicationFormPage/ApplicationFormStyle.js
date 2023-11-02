@@ -1,23 +1,33 @@
 import styled from "styled-components";
 
-export const ApplicationForm = styled.form`
+export const ApplicationFormContainer = styled.form`
     display: flex;
     flex-direction: column;
     width: 500px;
-    padding: 2rem;
+    /* padding: 2rem; */
 `
+export const ApplicationForm = styled.form`
+    width: 100%;
+    /* background-color: red; */
+    `
 
 export const Input = styled.input `
    width: 90%;
-    padding: 10px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-`
+   padding: 10px;
+   border-radius: 20px;
+   margin-bottom: 10px;
+   text-decoration: none;
+   border: none;
+   border-bottom: 1px solid #555;
+   outline: none;
+   `
 export const Select = styled.select `
-   width: 90%;
-    padding: 10px;
-    border-radius: 20px;
-    margin-bottom: 10px;
+   width: 95%;
+   padding: 10px;
+   border-radius: 20px;
+   margin-bottom: 10px;
+   outline: none;
+   border: none;
 `
 export const Option = styled.option`
     width: 90%;
