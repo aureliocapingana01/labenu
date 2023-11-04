@@ -8,7 +8,6 @@ export const ApplicationFormContainer = styled.form`
 `
 export const ApplicationForm = styled.form`
     width: 100%;
-    /* background-color: red; */
     `
 
 export const Input = styled.input `

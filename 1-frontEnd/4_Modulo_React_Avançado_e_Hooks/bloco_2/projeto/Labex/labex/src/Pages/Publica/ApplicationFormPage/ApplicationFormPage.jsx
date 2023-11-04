@@ -1,4 +1,4 @@
- import React from "react";
+//  import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ApplicationForm, ApplicationFormContainer, Input, Option, Select } from "./ApplicationFormStyle";
 import { Button, DivButton } from "../../Privada/LoginPage/Login";
@@ -6,7 +6,13 @@ import { H2 } from "../ListTripsPage/ListTripsStyle";
 
 const ApplicationFormPage = () => {
 
+    // const [selectTrip, setSelectTrip] = useState('')
+
     const navigate = useNavigate()
+
+    const selected = e => {
+        // setSelectTrip(e.target.value)
+    }
 
     return(
         <ApplicationFormContainer>
@@ -19,7 +25,7 @@ const ApplicationFormPage = () => {
 
             
             <ApplicationForm action="">
-                <Select name="" id="">
+                <Select onChange={selected()}>
                     <Option value="">Escolha uma viagem</Option>
                 </Select>
                 <Input type="text" placeholder="Nome" />

@@ -1,56 +1,70 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { listaDeViagens, urlGetTrips } from "../../../Components/Urls/Urls";
-import { H2, ListTripsContainer } from "./ListTripsStyle";
+// import axios from "axios";
+import { urlGetTrips } from "../../../Components/Urls/Urls";
+import {H2, ListTripsContainer, ListTripsContainerDiv, ParagrafoRequestInfo,} from "./ListTripsStyle";
 import { Button, DivButton } from "../../Privada/LoginPage/Login";
+import { UseRequestDataGet } from "../../../Components/Hooks/UseRequetDataGet";
 
 
 
 const ListTripsPage = () => {
+  const [data, loading, error] = UseRequestDataGet(urlGetTrips);
 
-    const [listTrip, setListTrip] = useState([])
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
+  const listTrips = data && data.map((trip, id) => {
+    return (
+      <ListTripsContainer key={id}>
+        
+        <ListTripsContainerDiv>
+          <h3>Nome : </h3>
+          <p>{trip.name} </p>
+        </ListTripsContainerDiv>
+        <ListTripsContainerDiv>
+          <h3>Planeta :</h3>
+          <p> {trip.planet}</p>
+        </ListTripsContainerDiv>
+        <ListTripsContainerDiv>
+          <h3>Descrição :</h3>
+          <p>{trip.description}</p>
+        </ListTripsContainerDiv>
+        <ListTripsContainerDiv>
+          <h3> Duração : </h3> <p>{trip.durationInDays}</p>
+        </ListTripsContainerDiv>
+        <ListTripsContainerDiv>
+          <h3> Data : </h3> <p>{trip.date}</p>
+        </ListTripsContainerDiv>
 
-    const getTrips = () => {
-        axios.get(urlGetTrips)
-        .then(res => {
-            setListTrip(res.data.trips)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
+      </ListTripsContainer>
+    );
+  });
 
-    getTrips()
-    
+  return (
+    <>
+      <DivButton>
+        <Button onClick={() => navigate("/")}>Voltar</Button>
+        <Button onClick={() => navigate("/trips/application")}>
+          Inscrever-Se
+        </Button>
+      </DivButton>
 
-        const listTrips = listTrip.map(trip => {
-            return(
-                <ListTripsContainer>
-                    <p>Nome : {trip.name} </p>
-                    <p>Planeta : {trip.planet} </p>
-                    <p>Descrição : {trip.description} </p>
-                    <span>Duração :  {trip.durationInDays} </span>
-                    <span>Data : {trip.date} </span>
-                </ListTripsContainer>
-            )
-        })
+      <H2>Lista de viagens</H2>
 
+      {
+        loading && <ParagrafoRequestInfo>Carregando...</ParagrafoRequestInfo>
+      }
+      {
+        !loading && error && <ParagrafoRequestInfo>Erro na requisicao...</ParagrafoRequestInfo>
+      }
+      {
+        !loading && data && data.length > 0 && listTrips
+      }
+      {
+        !loading && data && data.length === 0 && <ParagrafoRequestInfo>Não existe nenhum dados </ParagrafoRequestInfo>
+      }
+    </>
+  );
+};
 
-    return(
-        <>
-            <DivButton >
-                <Button onClick={() => navigate("/")}>Voltar</Button>
-                <Button onClick={() => navigate("/trips/application")} >Inscrever-Se</Button>
-            </DivButton>
-
-            <H2>Lista de viagens</H2>
-
-
-            {listTrips}
-        </>
-    )
-}
-export default ListTripsPage
+export default ListTripsPage;

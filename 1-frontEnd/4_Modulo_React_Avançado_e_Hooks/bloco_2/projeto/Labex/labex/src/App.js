@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Components/Header/Header";
 import Router from "./Components/Router/Router";
 import styled from "styled-components";
-import Footer from "./Components/Footer/Footer";
+// import Footer from "./Components/Footer/Footer";
 
 const Main = styled.main `
   width: 550px;
@@ -27,7 +27,6 @@ const App = () => {
       <Container>
         <Router />
       </Container>
-      {/* <Footer /> */}
     </Main>
   );
 }
