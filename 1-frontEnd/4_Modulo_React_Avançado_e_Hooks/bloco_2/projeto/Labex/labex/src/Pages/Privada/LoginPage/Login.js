@@ -1,15 +1,17 @@
 import styled from "styled-components";
 import { theme } from "../../../Theme";
 
-export const FormLogin = styled.div`
+export const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
-    /* width: 500px; */
-    /* padding: 2rem; */
 `
+// export const Form = styled.form`
+//     display: flex;
+//     flex-direction: column;
+// `
 export const DivButton = styled.div`
     display: flex;
-    margin: 20px 0;
+    margin: 30px 0;
     justify-content: space-around;
 `
 export const Button = styled.button`
@@ -26,9 +28,9 @@ export const Button = styled.button`
        color: #fff;
    }
 `
-export const LoginInput = styled.input`
+export const Input = styled.input`
     width: 90%;
-    padding: 10px;
+    padding: 11px;
     border-radius: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 `

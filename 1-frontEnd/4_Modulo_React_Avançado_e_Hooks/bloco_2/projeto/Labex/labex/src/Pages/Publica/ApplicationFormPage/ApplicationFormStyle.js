@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const ApplicationFormContainer = styled.form`
+export const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 500px;
     /* padding: 2rem; */
 `
-export const ApplicationForm = styled.form`
+export const Form = styled.form`
     width: 100%;
     `
 

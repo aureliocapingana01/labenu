@@ -8,12 +8,13 @@ import AdminHomePage from "../../Pages/Privada/AdminHomePage/AdminHomePage";
 import CreateTripPage from "../../Pages/Privada/CreateTripPage/CreateTripPage";
 import TripDetailsPage from "../../Pages/Privada/TripDetailsPage/TripDetailsPage";
 
+
 const Router = () => {
     return (
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<HomePage />} />
+                    <Route index element={<HomePage />} />
                     <Route path="/trips/list" element={<ListTripsPage />} />
                     <Route path="/trips/application" element={<ApplicationFormPage />} />
                     {/* Elementos da area admin */}
