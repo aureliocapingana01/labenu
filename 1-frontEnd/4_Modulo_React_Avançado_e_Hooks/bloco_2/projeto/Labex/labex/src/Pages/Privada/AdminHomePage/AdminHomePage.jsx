@@ -1,24 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, DivButton } from "../LoginPage/Login";
 import { useNavigate } from "react-router-dom";
 import { UseProtetedPage } from "../../../Components/Hooks/UseProtetedLogin";
+import { AdminInfo } from "./AdminInfo";
+import { H2 } from "../../Publica/ListTripsPage/ListTripsStyle";
+// import { CardTripsNames } from "./StyleAdmin";
+// import { UseRequestData } from "../../../Components/Hooks/UseRequetData";
+// import { urlGetTrips } from "../../../Components/Urls/Urls";
+
+
 
 const AdminHomePage = () => {
 
     UseProtetedPage()
 
+    // useEffect(() => {
+
+    // })
+    
     const navigate = useNavigate()
 
-    
+
     return(
         <>
-        {/*  Para o administrador ver a lista de viagens e poder deletá-las ou acessar o detalhe de cada uma delas */}
-        <h2>AdminHomePage</h2>
+
+        {/* <H2>AdminHomePage</H2> */}
 
             <DivButton >
                 <Button onClick={() => navigate('/')}>Tela Inicial</Button>
                 <Button>Criar uma Viagem</Button>
             </DivButton>
+
+            <AdminInfo />
+
         </>
     )
 }

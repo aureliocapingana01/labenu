@@ -4,19 +4,21 @@ import { useNavigate } from "react-router-dom";
 import { urlGetTrips } from "../../../Components/Urls/Urls";
 import {H2, ListTripsContainer, ListTripsContainerDiv, ParagrafoRequestInfo,} from "./ListTripsStyle";
 import { Button, DivButton } from "../../Privada/LoginPage/Login";
-import { UseRequestDataGet } from "../../../Components/Hooks/UseRequetDataGet";
+import { UseRequestData } from "../../../Components/Hooks/UseRequetData";
+// import AdminHomePage from "../../Privada/AdminHomePage/AdminHomePage";
+// import { CardTripsNames } from "../../Privada/AdminHomePage/StyleAdmin";
+
 
 
 
 const ListTripsPage = () => {
-  const [data, loading, error] = UseRequestDataGet(urlGetTrips);
+  const [data, loading, error] = UseRequestData(urlGetTrips);
 
   const navigate = useNavigate();
 
   const listTrips = data && data.map((trip, id) => {
     return (
       <ListTripsContainer key={id}>
-        
         <ListTripsContainerDiv>
           <h3>Nome : </h3>
           <p>{trip.name} </p>
@@ -63,6 +65,7 @@ const ListTripsPage = () => {
       {
         !loading && data && data.length === 0 && <ParagrafoRequestInfo>Não existe nenhum dados </ParagrafoRequestInfo>
       }
+
     </>
   );
 };
