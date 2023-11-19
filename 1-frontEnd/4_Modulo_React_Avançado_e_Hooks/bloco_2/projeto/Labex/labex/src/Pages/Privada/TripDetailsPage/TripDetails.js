@@ -4,7 +4,6 @@
 // import { urlGetTrips } from "../../../Components/Urls/Urls"
 // import { theme } from "../../../Theme"
 // import TripDetailsPage from "../TripDetailsPage/TripDetailsPage"
-// import { TripDetails } from "../TripDetailsPage/TripDetails"
 
 // const TripDiv = styled.div `
 // /* margin-top: 30px; */
@@ -27,23 +26,17 @@
 
 
 
-// export const AdminInfo = () => {
+// export const TripDetails = (props) => {
+//     const id = props.id
 
-//     const [data] = UseRequestData(urlGetTrips)
+//     console.log('Este e o id da props', id)
+    
+//     const GetTripDetail = () => {
 
+//     }
 //     return(
 //         <>
-//             {
-//                 data && data.map((tripsName) => {
-//                     return(
-//                         <TripDiv>
-//                             <TripName> {tripsName.name} </TripName>
-//                             <TripDetails id={tripsName.id}/>
-//                         </TripDiv> 
-                    
-//                         )
-//                 }   )
-//             }
+            
 //         </>
 //     )
 // }

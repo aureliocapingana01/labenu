@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { UseProtetedPage } from "../../../Components/Hooks/UseProtetedLogin";
 import { AdminInfo } from "./AdminInfo";
 import { H2 } from "../../Publica/ListTripsPage/ListTripsStyle";
+import { TripDetails } from "../TripDetailsPage/TripDetails";
+import TripDetailsPage from "../TripDetailsPage/TripDetailsPage";
 // import { CardTripsNames } from "./StyleAdmin";
 // import { UseRequestData } from "../../../Components/Hooks/UseRequetData";
 // import { urlGetTrips } from "../../../Components/Urls/Urls";
@@ -31,7 +33,7 @@ const AdminHomePage = () => {
                 <Button>Criar uma Viagem</Button>
             </DivButton>
 
-            <AdminInfo />
+            <TripDetailsPage />
 
         </>
     )
