@@ -2,19 +2,44 @@ import React from "react";
 import { Avatar, IconButton, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText } from "@mui/material";
 import ThumbUpAltSharpIcon from '@mui/icons-material/ThumbUpAltSharp';
 import ThumbDownAltSharpIcon from '@mui/icons-material/ThumbDownAltSharp';
-// import { ListItem, ListItemSecondaryAction } from "@mui/material";
+import axios from "axios";
 
 
 
-const CandidateItem = () => {
+
+const CandidateItem = (props) => {
+
+  // const decideCandidate = approve => {
+
+  //   const body = {
+  //       approve: approve
+  //   }
+
+  //   axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/aurelio/trips/${props.tripId}/candidates/${props.candidates.id}/decide`, body, {
+  //     headers :{
+  //       auth : localStorage.getItem('token')
+  //     } 
+  //   })
+  // }
+
+  const approveCandidate = () => {
+    console.log('Aprovado...')
+    props.decideCandidate(true, props.candidateId)
+  }
+
+  const rejectCandidate = () => {
+    console.log('Rejeitado...')
+    props.decideCandidate(false, props.candidateId)
+  }
+
     return(
         <ListItem>
         <ListItemSecondaryAction>
           <IconButton>
-            <ThumbUpAltSharpIcon />
+            <ThumbUpAltSharpIcon onClick={approveCandidate}/>
           </IconButton>
           <IconButton>
-             <ThumbDownAltSharpIcon />
+             <ThumbDownAltSharpIcon onClick={rejectCandidate}/>
            </IconButton>
 
         </ListItemSecondaryAction>
@@ -24,7 +49,7 @@ const CandidateItem = () => {
           </Avatar>
         </ListItemAvatar>
         <ListItemText
-          primary="Candidato 1"
+          primary={props.candidates.name}
         />
       </ListItem>
     )

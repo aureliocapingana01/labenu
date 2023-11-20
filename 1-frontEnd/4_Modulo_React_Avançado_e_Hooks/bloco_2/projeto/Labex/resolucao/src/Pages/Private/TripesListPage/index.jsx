@@ -1,16 +1,15 @@
 import React from "react";
 import PageTitle from "../../../Components/PageTitle/PageTitle";
-import {
-  Button,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-} from "@mui/material";
+import {Button, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { Link } from "react-router-dom";
 import {TripListPageContainer } from "./style";
+import { UserTripList } from "../../../Components/Hooks/userTripList";
+
 
 const TripsListPage = () => {
+
+  const trips = UserTripList()
+
   return (
     <TripListPageContainer>
       <PageTitle title={"Lista de Vaigens"} />
@@ -23,35 +22,19 @@ const TripsListPage = () => {
 
       <nav aria-label="secondary mailbox folders">
         <List>
-          <Link to={'/viagens/detalhes'} >
-            <ListItem disablePadding Button>
-              <ListItemButton>
-                <ListItemText primary="Viagem para Marte" />
-              </ListItemButton>
-            </ListItem>
-          </Link>
-          <Link to={'/viagens/detalhes'} >
-            <ListItem disablePadding Button>
-              <ListItemButton component="a" href="#simple-list">
-                <ListItemText primary="Viagem para a lua" />
-              </ListItemButton>
-            </ListItem>
-          </Link>
+          {
+            trips.map((trip) => {
+              return  <Link to={`/viagens/detalhes/${trip.id}`} >
+              <ListItem disablePadding Button>
+                <ListItemButton>
+                  <ListItemText primary={trip.name} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+            })
+          }
         </List>
       </nav>
-
-      {/* <List>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Trash" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
-              <ListItemText primary="Spam" />
-            </ListItemButton>
-          </ListItem>
-        </List> */}
     </TripListPageContainer>
   );
 };

@@ -10,7 +10,7 @@ import { CardContent } from "@mui/material";
 
 
 
-const CandidatesList = () => {
+const CandidatesList = (props) => {
   return (
     <div>
       <Card sx={{ minWidth: 275 }}>
@@ -18,12 +18,18 @@ const CandidatesList = () => {
           <Typography sx={{ fontSize: 18 }} gutterBottom>
             Lista de Candidatos
           </Typography>
-      
+       
 
           <List>
-            <CandidateItem />
-            <CandidateItem />
-            <CandidateItem />
+            {
+              props.candidates.map(candidate => {
+                return <CandidateItem 
+                candidates={candidate} 
+                // tripId={props.tripId}
+                decideCandidate={props.decideCandidate}/>
+              })
+            }
+          
           </List>
         </CardContent>
       </Card>

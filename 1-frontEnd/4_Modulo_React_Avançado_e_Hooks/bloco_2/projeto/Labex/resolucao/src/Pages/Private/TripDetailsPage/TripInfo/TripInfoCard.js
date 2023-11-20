@@ -14,18 +14,29 @@ import TripInfoItem from './TripInfoItem';
 //     background-color: blue;
 // `
 
-const TripInfoCard = () => {
+const TripInfoCard = (props) => {
+
+  const {
+    name,
+    planet,
+    description,
+    date,
+    durationInDays,
+
+  } = props.info
+
+
     return(
         <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography sx={{ fontSize: 18 }} gutterBottom>
           Informações da viagem
         </Typography>
-       <TripInfoItem infoTitle={'Name'} info={'Viagem Para Marte'}/>
-       <TripInfoItem infoTitle={'Planeta'} info={'Marte'}/>
-       <TripInfoItem infoTitle={'Data'} info={'25/11/2023'}/>
-       <TripInfoItem infoTitle={'Descrição'} info={'Uma visita ao nosso vizinho Marte'}/>
-       <TripInfoItem infoTitle={'Duração em dias'} info={'365 dias'}/>
+       <TripInfoItem infoTitle={'Name'} info={name}/>
+       <TripInfoItem infoTitle={'Planeta'} info={planet}/>
+       <TripInfoItem infoTitle={'Data'} info={date}/>
+       <TripInfoItem infoTitle={'Descrição'} info={description}/>
+       <TripInfoItem infoTitle={'Duração em dias'} info={durationInDays}/>
       </CardContent>
     
     </Card>

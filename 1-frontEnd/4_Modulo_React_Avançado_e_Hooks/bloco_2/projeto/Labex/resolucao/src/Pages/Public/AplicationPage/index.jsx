@@ -6,24 +6,82 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
+import axios from "axios";
+import { UserForm } from "../../../Components/Hooks/useForm";
+import { UserTripList } from "../../../Components/Hooks/userTripList";
+
+
 
 const AplicationPage = () => {
+  const trips = UserTripList()
+  const [form, onChangeInput] = UserForm({
+    name: "",
+    age: "",
+    applicationText: "",
+    profession: "",
+    country: "",
+    trip: null,
+  });
+
+  //  Para se candidatatr a uma viagem
+  const onSubmitApplication = (e) => {
+    e.preventDefault();
+
+    console.log(form);
+    const body = {
+      name: form.name,
+      age: form.age,
+      applicationText: form.applicationText,
+      profession: form.profession,
+      country: form.country,
+    };
+
+    axios.post(
+      `https://us-central1-labenu-apis.cloudfunctions.net/labeX/aurelio/trips/${form.trip.id}/apply`,
+      body
+    );
+  };
+
   return (
     <>
-      <PageTitle title={"Cria viagens"} />
+      <PageTitle title={"Aplicar para viagens"} />
 
-      <LoginForm>
-        <TextField label={"Nome do candidato"} />
-        <TextField label={"idade"} type={"number"} />
+      <LoginForm onSubmit={onSubmitApplication}>
         <TextField
+          onChange={onChangeInput}
+          label={"Nome do candidato"}
+          name="name"
+          value={form["name"]}
+        />
+        <TextField
+          onChange={onChangeInput}
+          label={"idade"}
+          type={"number"}
+          name="age"
+          value={form["age"]}
+        />
+        <TextField
+          onChange={onChangeInput}
           label={"Texto de Aplicacao"}
+          name="applicationText"
+          value={form["applicationText"]}
           helperText="Explique porque devemos escolher voçê para esta viagem"
         />
-        <TextField label={"Profissão"} />
+        <TextField
+          onChange={onChangeInput}
+          label={"Profissão"}
+          name="profession"
+          value={form["profession"]}
+        />
 
         <FormControl fullWidth>
           <InputLabel id="select-paises">País</InputLabel>
-          <Select labelId="select-paises">
+          <Select
+            labelId="select-paises"
+            onChange={onChangeInput}
+            name="country"
+            value={form["country"]}
+          >
             <MenuItem value={"Angola"}>Angola</MenuItem>
             <MenuItem value={"Brasil"}>Brasil</MenuItem>
             <MenuItem value={"EUA"}>Estados Unidos</MenuItem>
@@ -34,21 +92,19 @@ const AplicationPage = () => {
           <InputLabel id="select-viagens">Viagens</InputLabel>
           <Select
             labelId="select-viagens"
-            //   id="demo-simple-select"
-            //   value={age}
-            //   label="Age"
-            //   onChange={handleChange}
+            onChange={onChangeInput}
+            label={"Profissão"}
+            name="trip"
+            value={form["trip"]}
           >
-            <MenuItem value={"1"}>Marte</MenuItem>
-            <MenuItem value={"2"}>Jupter</MenuItem>
-            <MenuItem value={"3"}>Plutão</MenuItem>
+            {trips.map((trip) => {
+              return <MenuItem value={trip}>{trip.name}</MenuItem>;
+            })}
           </Select>
         </FormControl>
 
-        {/* <TextField label={"Duração em dias"} type="number" /> */}
-
         <Button type="submit " variant={"contained"} color="primary">
-          Cria Viagem
+          Escrever-se a uma viagem
         </Button>
       </LoginForm>
     </>
