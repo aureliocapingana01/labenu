@@ -4,11 +4,14 @@ import {Button, List, ListItem, ListItemButton, ListItemText } from "@mui/materi
 import { Link } from "react-router-dom";
 import {TripListPageContainer } from "./style";
 import { UserTripList } from "../../../Components/Hooks/userTripList";
+import { UserProtectdPage } from "../../../Components/Hooks/useProtectedPage";
 
 
 const TripsListPage = () => {
 
   const trips = UserTripList()
+
+  UserProtectdPage()
 
   return (
     <TripListPageContainer>

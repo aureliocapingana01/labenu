@@ -6,6 +6,7 @@ import List from '@mui/material/List';
 
 import CandidateItem from "./CandidateItem";
 import { CardContent } from "@mui/material";
+// import { CardContent } from "@mui/material";
 // import Typography from "@mui/material/Typography";
 
 

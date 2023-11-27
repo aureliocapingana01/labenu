@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import PageTitle from "../../../Components/PageTitle/PageTitle";
 import CandidatesList from "./Candidate/CandidatesList";
 import { ContentContainer } from "./style";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import TripInfoCard from "./TripInfo/TripInfoCard";
 import { Button } from "@mui/material";
 import axios from "axios";
+import { UserProtectdPage } from "../../../Components/Hooks/useProtectedPage";
 
 
 
@@ -15,6 +16,8 @@ const TripDetailsPage = () => {
 
   //  olha para url da rota e tenta pegar os paramentros
   const params = useParams()
+
+ UserProtectdPage()
 
   const getTripDetail = () => {
     axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/aurelio/trip/${params.tripId}`, {
