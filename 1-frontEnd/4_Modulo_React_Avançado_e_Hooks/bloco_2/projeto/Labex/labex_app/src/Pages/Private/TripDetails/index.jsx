@@ -2,7 +2,7 @@
 const TripDetailsPage = () => {
     return(
         <>
-        
+            TripDetailsPage
         </>
     )
 }

@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import HomePage from "../../Home"
 import ApplicationFormPage from "../../Pages/Public/ApplicationForm"
-import Login from "../../Pages/Private/Login"
 import LoginPage from "../../Pages/Private/Login"
 import TripListPage from "../../Pages/Private/tripList"
 import CreateTripPage from "../../Pages/Private/CreateTrip"
@@ -19,6 +18,8 @@ export const Router = () => {
                 <Route path="/tripList" element={<TripListPage/>} />
                 <Route path="/createTrip" element={<CreateTripPage/>} />
                 <Route path="/tripDetails" element={<TripDetailsPage/>} />
+
+                <Route path="*" element={<HomePage/>} />
             </Routes>
           </BrowserRouter>
         </>
