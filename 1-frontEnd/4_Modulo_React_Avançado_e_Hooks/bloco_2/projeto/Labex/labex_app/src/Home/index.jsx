@@ -1,9 +1,8 @@
-import { Box, Button, Typography } from "@mui/material"
+import { Box, Button } from "@mui/material"
 import React from "react"
-import { ButtonContainer } from "./style"
+import { ButtonContainer, HomeContainer } from "./style"
 import { Link } from "react-router-dom"
-// import { useNavigate } from "react-router-dom"
-// import { useNavigate } from "react-router-dom"
+
 
 
 const HomePage = () => {
@@ -11,7 +10,7 @@ const HomePage = () => {
     // const navigate = useNavigate()
 
     return(
-        <Box sx={{ width: '100%', maxWidth: 500 }}>
+        <HomeContainer>
 
             <ButtonContainer>
                 <Link to={'/applicatioForm'}>
@@ -23,7 +22,7 @@ const HomePage = () => {
                 </Link>
             </ButtonContainer>
 
-        </Box>
+        </HomeContainer>
 
     )
 }
